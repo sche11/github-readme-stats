@@ -55,7 +55,7 @@ export default async (req, res) => {
       CONSTANTS.ONE_DAY,
     );
 
-    res.setHeader("Cache-Control", `public, max-age=${cacheSeconds}`);
+    res.setHeader("Cache-Control", `max-age=${cacheSeconds}, s-maxage=${cacheSeconds} stale-while-revalidate`);
 
     return res.send(
       renderTopLanguages(topLangs, {
